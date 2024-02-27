@@ -20,6 +20,19 @@ const client = new Client({
 client.connect()
 console.log("Connecté")
 
+const request = async () => {
+    const query = {
+        text: 'SELECT * FROM db_api.user'
+    }
+    const res = await client.query(query);
+
+    for (const r of res.rows) {
+        console.log(r)
+    }
+}
+
+request()
+
 const server = app.listen(8085, function () {
     const host = server.address().address
     const port = server.address().port
