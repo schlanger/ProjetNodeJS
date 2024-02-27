@@ -55,10 +55,29 @@ createUser = (user, result_bdd_request) => {
     );
 }
 
+// Mettre à jour un user
+
+updateUserById = (id, user, result_bdd_request) => {
+    const {username,password,first_name,last_name,email,age } = user; // Assurez-vous d'avoir les mêmes noms de colonnes que dans votre table
+
+    database.query(
+        "UPDATE db_api.user SET username = $1, password = $2, first_name = $3, last_name = $4, email = $5, age = $6 WHERE id = $7",
+        [username, password, first_name, last_name, email, age, id], // Passer les valeurs à insérer dans le même ordre que les colonnes
+        (error, response) => {
+            if (error) {
+                result_bdd_request(error);
+            }
+            // Le résultat de la requête est renvoyé
+            result_bdd_request(null, response);
+        }
+    );
+}
+
 
 module.exports = {  
     getAllUsers,
     getUserById,
     createUser,
+    updateUserById,
     UserConstructor
 }

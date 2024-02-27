@@ -56,8 +56,28 @@ createUser = (request,response) => {
     });
 }
 
+// Mettre à jour un user
+
+updateUserById = (request,response) => {
+    if (!request.body) {
+        response.status(400).send({
+            message: "Content can not be empty!"
+        });
+    }
+
+    userModel.updateUserById(request.params.id, new userModel.UserConstructor(request.body),(error, data) => {   
+        if (error)
+            response.status(500).send({
+                message: error.message || "Some error occurred while updating the user."
+            });
+        else 
+            response.send(data);
+    });
+}
+
 module.exports = {
     getAllUsers, 
     getUserById,
-    createUser
+    createUser,
+    updateUserById
 }
