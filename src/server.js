@@ -1,15 +1,33 @@
+const router = require('express').Router()
+const swaggerUI = require('swagger-ui-express')
+const express = require('express')
+const app = express()
+const dotenv = require('dotenv')
 
-//importation des modules 
+const getConfigSwagger = require('./middleware/swagger.js')
 
-const router = require('express').Router();
-const swaggerUi = require('swagger-ui-express');
+dotenv.config()
 
-// Définition de l'ensemeble des constantes utilisant le middleware swagger
-const getConfigSwagger = require('../src/middleware/swagger.js');
+const { Client } = require('pg')
 
-// Définition des routes 
+const client = new Client({
+    host: 'localhost',
+    database: 'postgres',
+    user: 'postgres',
+    password: 'postgres'
+})
 
-router.use('/api-docs', swaggerUi.serve);
-router.get('/api-docs', swaggerUi.setup(getConfigSwagger.swaggerOptions,getConfigSwagger.swaggerSortByHTTPRequest));
+client.connect()
+console.log("Connecté")
 
-module.exports = router;
+const server = app.listen(8085, function () {
+    const host = server.address().address
+    const port = server.address().port
+
+    console.log('Example app listening at http//%s:%s', host, port)
+})
+
+app.use('/api-doc', swaggerUI.serve)
+app.get('/api-doc', swaggerUI.setup(getConfigSwagger.swaggerOptions, getConfigSwagger.swaggerSortByHTTPRequest))
+
+module.exports = router

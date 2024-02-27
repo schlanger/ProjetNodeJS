@@ -1,4 +1,5 @@
 const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 // Définition de l'architecture de base de la documentation
 const swaggerGeneration = {
@@ -11,7 +12,7 @@ const swaggerGeneration = {
     },
     servers: [
         {
-        url: 'http://localhost:8081/api/v1',
+        url: 'http://localhost:8085/api-doc/',
         description: 'Development server',
         },
     ],
@@ -21,3 +22,5 @@ const swaggerGeneration = {
 };
 
 const swaggerOptions = swaggerJsDoc(swaggerGeneration);
+
+
