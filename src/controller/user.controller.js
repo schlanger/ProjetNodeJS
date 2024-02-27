@@ -40,8 +40,8 @@ createUser = (request,response) => {
         id: request.body.id,
         username: request.body.username,
         password: request.body.password,
-        firstname: request.body.firstname,
-        lastname: request.body.lastname,
+        first_name: request.body.first_name,
+        last_name: request.body.last_name,
         email: request.body.email,
         age: request.body.age
     });
