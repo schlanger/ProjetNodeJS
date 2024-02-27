@@ -73,11 +73,22 @@ updateUserById = (id, user, result_bdd_request) => {
     );
 }
 
+// Supprimer un user
+deleteUserById = (id, result_bdd_request) => {
+    database.query("DELETE FROM db_api.user WHERE id = $1", [id], (error, response) => {
+        if (error) {
+            result_bdd_request(error);
+        }
+        // Le résultat de la requête est renvoyé
+        result_bdd_request(null, response);
+    });
+}
 
 module.exports = {  
     getAllUsers,
     getUserById,
     createUser,
     updateUserById,
+    deleteUserById,
     UserConstructor
 }

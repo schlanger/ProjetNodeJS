@@ -74,10 +74,21 @@ updateUserById = (request,response) => {
             response.send(data);
     });
 }
+deleteUserById = (request,response) => {
+    userModel.deleteUserById(request.params.id,(error, data) => {   
+        if (error)
+            response.status(500).send({
+                message: error.message || "Some error occurred while deleting the user."
+            });
+        else 
+            response.send(data);
+    });
+}
 
 module.exports = {
     getAllUsers, 
     getUserById,
     createUser,
-    updateUserById
+    updateUserById,
+    deleteUserById
 }
