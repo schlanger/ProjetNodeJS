@@ -3,35 +3,26 @@ const swaggerUI = require('swagger-ui-express')
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
+const client = require('../src/database/db_connect.js')
 
 const getConfigSwagger = require('./middleware/swagger.js')
 
-dotenv.config()
+// Importation des routes 
+const userRoute = require('./routes/User.route.js')
+//const docRoute = require
 
-const { Client } = require('pg')
+// Initialisation et configuration
 
-const client = new Client({
-    host: 'localhost',
-    database: 'postgres',
-    user: 'postgres',
-    password: 'postgres'
-})
+dotenv.config();
 
-client.connect()
-console.log("Connecté")
+app.use(express.json()); // Spécifie la réponse en JSON
+app.set('json spaces' , 2); // Spécifie l'indentation de la réponse en JSON
 
-const request = async () => {
-    const query = {
-        text: 'SELECT * FROM db_api.user'
-    }
-    const res = await client.query(query);
+// Déclaration des endpoints 
+//server.use('/api/doc',)
+app.use('/api/users',userRoute);
 
-    for (const r of res.rows) {
-        console.log(r)
-    }
-}
-
-request()
+ 
 
 const server = app.listen(8085, function () {
     const host = server.address().address
@@ -40,7 +31,7 @@ const server = app.listen(8085, function () {
     console.log('Example app listening at http//%s:%s', host, port)
 })
 
-app.use('/api-doc', swaggerUI.serve)
-app.get('/api-doc', swaggerUI.setup(getConfigSwagger.swaggerOptions, getConfigSwagger.swaggerSortByHTTPRequest))
+app.use('/api', swaggerUI.serve)
+app.get('/api', swaggerUI.setup(getConfigSwagger.swaggerOptions, getConfigSwagger.swaggerSortByHTTPRequest))
 
-module.exports = router
+module.exports = app;
