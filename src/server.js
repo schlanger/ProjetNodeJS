@@ -8,6 +8,7 @@ const client = require('../src/database/db_connect.js')
 
 // Importation des routes 
 const userRoute = require('./routes/user.route.js')
+const orderRoute = require('./routes/order.route.js')
 //const docRoute = require
 
 // Initialisation et configuration
@@ -21,6 +22,7 @@ app.set('json spaces' , 2); // Spécifie l'indentation de la réponse en JSON
 //server.use('/api/doc',)
 app.use('/api', swaggerUI.serve, swaggerUI.setup(swaggerFile))
 app.use('/users',userRoute);
+app.use('/order',orderRoute);
  
 
  
