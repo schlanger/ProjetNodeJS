@@ -53,10 +53,24 @@ updateOrderById = (request,response) => {
     });
 }
 
+// Supprimer un order
+
+deleteOrderById = (request,response) => {
+    orderModel.deleteOrderById(request.params.id,(error, data) => {
+        if (error)
+            response.status(500).send({
+                message: error.message || "Some error occurred while deleting order."
+            });
+        else 
+            response.send(data);
+    }); 
+}
+
 
 module.exports = {
     getAllOrders,
     getOrderById,
     createOrder,
-    updateOrderById
+    updateOrderById,
+    deleteOrderById
 }

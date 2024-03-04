@@ -4,7 +4,8 @@ const {
     getAllOrders,
     getOrderById,
     createOrder,
-    updateOrderById
+    updateOrderById,
+    deleteOrderById
 
 } = require('../controller/order.controller')
 
@@ -15,7 +16,7 @@ router.get('/:id',getOrderById);
 router.post('/create',createOrder);
 
 router.patch('/update/:id',updateOrderById);
-/*
-router.delete('/delete/:id',deleteUserById)*/
+
+router.delete('/delete/:id',deleteOrderById)
 
 module.exports = router;

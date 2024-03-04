@@ -59,6 +59,17 @@ updateOrderById = (id, order, result_bdd_request) => {
     });
 }
 
+// Supprimer un order
+
+deleteOrderById = (id, result_bdd_request) => {
+    database.query("DELETE FROM db_api.commande WHERE id = $1", [id], (error, response) => {
+        if (error) {
+            result_bdd_request(error);
+        }
+        result_bdd_request(null, response);
+    });
+}
+
 
 
 module.exports = {  
@@ -66,5 +77,6 @@ module.exports = {
     getOrderById,
     createOrder,
     updateOrderById,
+    deleteOrderById,
     OrderConstructor
 }
