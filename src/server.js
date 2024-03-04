@@ -1,14 +1,13 @@
-const router = require('express').Router()
 const swaggerUI = require('swagger-ui-express')
+const swaggerFile = require('./middleware/swagger-output.json')
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
 const client = require('../src/database/db_connect.js')
 
-const getConfigSwagger = require('./middleware/swagger.js')
 
 // Importation des routes 
-const userRoute = require('./routes/User.route.js')
+const userRoute = require('./routes/user.route.js')
 //const docRoute = require
 
 // Initialisation et configuration
@@ -20,18 +19,15 @@ app.set('json spaces' , 2); // Spécifie l'indentation de la réponse en JSON
 
 // Déclaration des endpoints 
 //server.use('/api/doc',)
-app.use('/api/users',userRoute);
+app.use('/api', swaggerUI.serve, swaggerUI.setup(swaggerFile))
+app.use('/users',userRoute);
+ 
 
  
 
-const server = app.listen(8085, function () {
-    const host = server.address().address
-    const port = server.address().port
+app.listen(8000, () => {
 
-    console.log('Example app listening at http//%s:%s', host, port)
+    console.log('Server is running on port  http://localhost:8000/api')
 })
-
-app.use('/api', swaggerUI.serve)
-app.get('/api', swaggerUI.setup(getConfigSwagger.swaggerOptions, getConfigSwagger.swaggerSortByHTTPRequest))
 
 module.exports = app;

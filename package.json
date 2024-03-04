@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/server.js",
     "lint": "eslint . --ext .js",
-    "test": "mocha"
+    "test": "mocha",
+    "swagger": "node src/middleware/swagger.js"
   },
   "author": "yehouda",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "swagger-autogen": "^2.23.7"
   }
 }
