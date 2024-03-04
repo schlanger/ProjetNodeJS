@@ -16,3 +16,8 @@ Génération de la documentation avec swagger :
 
 Création du fichier .env dans le projet :
 # npm install dotenv
+
+Commande pour générer la documentation swagger :
+# npm install --save-dev swagger-autogen
+Commande pour générer le fichier Swagger-output.json : 
+# npm run swagger 
