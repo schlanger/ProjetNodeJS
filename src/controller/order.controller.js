@@ -13,6 +13,23 @@ getAllOrders = (request,response) => {
             response.send(data);
     });
 };
+
+// Récupérer un order par son id
+
+getOrderById = (request,response) => {
+    orderModel.getOrderById(request.params.id,(error, data) => {   
+        if (error)
+            response.status(500).send({
+                message: error.message || "Some error occurred while retrieving users."
+            });
+        else 
+            response.send(data);
+    });
+};
+
+
+
 module.exports = {
-    getAllOrders
+    getAllOrders,
+    getOrderById
 }
