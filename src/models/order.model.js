@@ -35,6 +35,16 @@ getOrderById = (id, result_bdd_request) => {
     })
 }
 
+createOrder = (newOrder, result_bdd_request) => {   
+    database.query("INSERT INTO db_api.commande (prix, nom, quantite, date, reference) VALUES ($1, $2, $3, $4, $5)", [newOrder.prix, newOrder.nom, newOrder.quantite, newOrder.date, newOrder.reference], (error, response) => {
+        if (error) {
+            result_bdd_request(error);
+        }
+        // Le résultat de la requête est renvoyé
+        result_bdd_request(null, response);
+    })
+}
+
 
 
 
@@ -43,5 +53,6 @@ getOrderById = (id, result_bdd_request) => {
 module.exports = {  
     getAllOrders,
     getOrderById,
+    createOrder,
     OrderConstructor
 }

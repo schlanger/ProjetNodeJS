@@ -27,9 +27,22 @@ getOrderById = (request,response) => {
     });
 };
 
+// Créer un order
+
+createOrder = (request,response) => {
+    orderModel.createOrder(request.body,(error, data) => {   
+        if (error)
+            response.status(500).send({
+                message: error.message || "Some error occurred while creating order."
+            });
+        else 
+            response.send(data);
+    });
+}
 
 
 module.exports = {
     getAllOrders,
-    getOrderById
+    getOrderById,
+    createOrder
 }

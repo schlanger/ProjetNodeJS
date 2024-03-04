@@ -2,7 +2,8 @@ const router = require('express').Router();
 
 const {
     getAllOrders,
-    getOrderById
+    getOrderById,
+    createOrder
 
 } = require('../controller/order.controller')
 
@@ -10,8 +11,9 @@ router.get('/',getAllOrders);
 
 router.get('/:id',getOrderById);
 
+router.post('/create',createOrder);
+
 /*
-router.post('/create',createUser);
 
 router.patch('/update/:id',updateUserById);
 
