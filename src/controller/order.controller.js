@@ -40,9 +40,23 @@ createOrder = (request,response) => {
     });
 }
 
+// Mettre à jour un order
+
+updateOrderById = (request,response) => {
+    orderModel.updateOrderById(request.params.id,request.body,(error, data) => {   
+        if (error)
+            response.status(500).send({
+                message: error.message || "Some error occurred while updating order."
+            });
+        else 
+            response.send(data);
+    });
+}
+
 
 module.exports = {
     getAllOrders,
     getOrderById,
-    createOrder
+    createOrder,
+    updateOrderById
 }

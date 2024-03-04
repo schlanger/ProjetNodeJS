@@ -3,7 +3,8 @@ const router = require('express').Router();
 const {
     getAllOrders,
     getOrderById,
-    createOrder
+    createOrder,
+    updateOrderById
 
 } = require('../controller/order.controller')
 
@@ -13,10 +14,8 @@ router.get('/:id',getOrderById);
 
 router.post('/create',createOrder);
 
+router.patch('/update/:id',updateOrderById);
 /*
-
-router.patch('/update/:id',updateUserById);
-
 router.delete('/delete/:id',deleteUserById)*/
 
 module.exports = router;
