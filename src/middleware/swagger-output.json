@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Description",
+    "description": "API pour la gestion des utilisateurs et des commandes",
     "version": "1.0.0"
   },
   "host": "localhost:8000",
@@ -10,9 +10,20 @@
   "schemes": [
     "http"
   ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Opérations sur les utilisateurs"
+    },
+    {
+      "name": "Orders",
+      "description": "Opérations sur les commandes"
+    }
+  ],
   "paths": {
     "/users/": {
       "get": {
+        "summary": "Renvoie la liste des utilisateurs",
         "description": "",
         "responses": {
           "200": {
@@ -21,11 +32,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Users"]
       }
     },
     "/users/{id}": {
       "get": {
+        "summary": "Renvoie un utilisateur par son id",
         "description": "",
         "parameters": [
           {
@@ -42,11 +55,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Users"]
       }
     },
     "/users/create": {
       "post": {
+        "summary": "Créer un utilisateur",
         "description": "",
         "parameters": [
           {
@@ -90,11 +105,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Users"]
       }
     },
     "/users/update/{id}": {
       "patch": {
+        "summary": "Mettre à jour un utilisateur",
         "description": "",
         "parameters": [
           
@@ -140,11 +157,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Users"]
       }
     },
     "/users/delete/{id}": {
       "delete": {
+        "summary": "Supprimer un utilisateur",
         "description": "",
         "parameters": [
           {
@@ -161,11 +180,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Users"]
       }
     },
     "/order/": {
       "get": {
+        "summary": "Renvoie la liste des commandes",
         "description": "",
         "responses": {
           "200": {
@@ -174,11 +195,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Orders"]
       }
     },
     "/order/{id}": {
       "get": {
+        "summary": "Renvoie une commande par son id",
         "description": "",
         "parameters": [
           {
@@ -195,11 +218,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Orders"]
       }
     },
     "/order/create": {
       "post": {
+        "summary": "Créer une commande",
         "description": "",
         "parameters": [
           {
@@ -237,11 +262,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Orders"]
       }
     },
     "/order/update/{id}": {
       "patch": {
+        "summary": "Mettre à jour une commande",
         "description": "",
         "parameters": [
           {
@@ -285,11 +312,13 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Orders"]
       }
     },
     "/order/delete/{id}": {
       "delete": {
+        "summary": "Supprimer une commande",
         "description": "",
         "parameters": [
           {
@@ -306,7 +335,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "tags": ["Orders"]
       }
     }
   }
