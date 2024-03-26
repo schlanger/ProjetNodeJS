@@ -18,7 +18,7 @@ getAllOrders = result_bdd_request => {
             result_bdd_request(error);
         }
         // Le résultat de la requête est renvoyé
-        result_bdd_request(null, response);
+        result_bdd_request(null, response.rows);
     });
 }
 
@@ -31,7 +31,7 @@ getOrderById = (id, result_bdd_request) => {
             result_bdd_request(error);
         }
         // Le résultat de la requête est renvoyé
-        result_bdd_request(null, response);
+        result_bdd_request(null, response.rows);
     })
 }
 
@@ -43,7 +43,7 @@ createOrder = (newOrder, result_bdd_request) => {
             result_bdd_request(error);
         }
         // Le résultat de la requête est renvoyé
-        result_bdd_request(null, response);
+        result_bdd_request(null, response.rows);
     })
 }
 
@@ -55,7 +55,7 @@ updateOrderById = (id, order, result_bdd_request) => {
         if (error) {
             result_bdd_request(error);
         }
-        result_bdd_request(null, response);
+        result_bdd_request(null, response.rows);
     });
 }
 
@@ -66,7 +66,7 @@ deleteOrderById = (id, result_bdd_request) => {
         if (error) {
             result_bdd_request(error);
         }
-        result_bdd_request(null, response);
+        result_bdd_request(null, response.rows);
     });
 }
 
