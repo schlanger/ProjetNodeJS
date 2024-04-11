@@ -1,3 +1,5 @@
+API effectuant les opérations de CRUD pour les entités Order et User afin d'assurer la gestion des utilisateurs et des commandes.Cette API est développée en Express NodeJS 
+
 Installation du projet :
 # npm init
 
@@ -21,3 +23,6 @@ Commande pour générer la documentation swagger :
 # npm install --save-dev swagger-autogen
 Commande pour générer le fichier Swagger-output.json : 
 # npm run swagger 
+
+Pour la connexion à une base de donnée PostgreSQL : 
+# npm install pg
